@@ -1,4 +1,5 @@
-import pool from '../db';
+/* eslint-disable import/extensions */
+import pool from '../db.js';
 
 const getCommentById = async (commentId) => {
   const result = await pool.query('SELECT * FROM comments WHERE id = $1', [

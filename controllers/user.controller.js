@@ -1,8 +1,9 @@
+/* eslint-disable import/extensions */
 import {
   loginUserService,
   registerUserService,
-} from '../services/user.service';
-import { sendResponse } from '../utils';
+} from '../services/user.service.js';
+import { sendResponse } from '../utils.js';
 
 const registerUserController = async (req, res) => {
   const { email, password } = req.body;

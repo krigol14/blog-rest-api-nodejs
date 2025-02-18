@@ -1,11 +1,12 @@
+/* eslint-disable import/extensions */
 import {
   createPost,
   deletePost,
   getPostById,
   getPostsPaginated,
   updatePost,
-} from '../models/post.model';
-import { formatResponse } from '../utils';
+} from '../models/post.model.js';
+import { formatResponse } from '../utils.js';
 
 const getPostsService = async (limit, offset) => {
   const posts = await getPostsPaginated(limit, offset);

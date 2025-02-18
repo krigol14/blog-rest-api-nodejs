@@ -1,4 +1,5 @@
-import pool from '../db';
+/* eslint-disable import/extensions */
+import pool from '../db.js';
 
 const getPostsPaginated = async (limit, offset, userId = null) => {
   const query = userId

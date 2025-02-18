@@ -1,10 +1,11 @@
-import { getCommentsPaginatedByPostId } from '../models/comment.model';
+/* eslint-disable import/extensions */
+import { getCommentsPaginatedByPostId } from '../models/comment.model.js';
 import {
   createCommentService,
   deleteCommentService,
   updateCommentService,
-} from '../services/comment.service';
-import { getPagination, sendResponse } from '../utils';
+} from '../services/comment.service.js';
+import { getPagination, sendResponse } from '../utils.js';
 
 const getPostCommentsController = async (req, res) => {
   const { postId } = req.params;

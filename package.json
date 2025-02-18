@@ -16,7 +16,6 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "express": "^4.21.2",
-    "extensionless": "^1.9.9",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.3",
     "signale": "^1.4.0"
@@ -29,7 +28,6 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
-    "fix-esm-import-path": "^1.4.0",
     "nodemon": "^3.1.9",
     "prettier": "^3.0.3"
   },

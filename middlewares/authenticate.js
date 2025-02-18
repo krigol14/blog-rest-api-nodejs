@@ -1,6 +1,7 @@
+/* eslint-disable import/extensions */
 import jwt from 'jsonwebtoken';
 
-import { sendResponse } from '../utils';
+import { sendResponse } from '../utils.js';
 
 const authenticate = (req, res, next) => {
   const authHeader = req.headers.authorization;

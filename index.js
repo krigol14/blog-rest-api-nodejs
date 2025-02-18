@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import express from 'express';
 import signale from 'signale';
 
@@ -6,7 +7,7 @@ import {
   deleteCommentController,
   getPostCommentsController,
   updateCommentController,
-} from './controllers/comment.controller';
+} from './controllers/comment.controller.js';
 import {
   createPostController,
   deletePostController,
@@ -14,13 +15,13 @@ import {
   getMyPostsController,
   getPostsByUserController,
   updatePostController,
-} from './controllers/post.controller';
-import refreshTokenController from './controllers/refreshToken.controller';
+} from './controllers/post.controller.js';
+import refreshTokenController from './controllers/refreshToken.controller.js';
 import {
   loginUserController,
   registerUserController,
-} from './controllers/user.controller';
-import authenticate from './middlewares/authenticate';
+} from './controllers/user.controller.js';
+import authenticate from './middlewares/authenticate.js';
 
 const app = express();
 

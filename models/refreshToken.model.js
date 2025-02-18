@@ -1,4 +1,5 @@
-import pool from '../db';
+/* eslint-disable import/extensions */
+import pool from '../db.js';
 
 const getRefreshToken = async (token) => {
   const result = await pool.query(

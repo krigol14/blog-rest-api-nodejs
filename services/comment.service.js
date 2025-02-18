@@ -1,11 +1,12 @@
+/* eslint-disable import/extensions */
 import {
   createComment,
   deleteComment,
   getCommentById,
   getCommentsPaginatedByPostId,
   updateComment,
-} from '../models/comment.model';
-import { formatResponse } from '../utils';
+} from '../models/comment.model.js';
+import { formatResponse } from '../utils.js';
 
 const getPostCommentsService = async (postId, limit, offset) => {
   const comments = await getCommentsPaginatedByPostId(postId, limit, offset);

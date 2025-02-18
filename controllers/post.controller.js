@@ -1,11 +1,12 @@
+/* eslint-disable import/extensions */
 import {
   createPostService,
   deletePostService,
   getPostsService,
   getUserPostsService,
   updatePostService,
-} from '../services/post.service';
-import { getPagination, sendResponse } from '../utils';
+} from '../services/post.service.js';
+import { getPagination, sendResponse } from '../utils.js';
 
 const getPostsByUserController = async (req, res) => {
   const { userId } = req.params;

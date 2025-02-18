@@ -1,5 +1,6 @@
-import refreshTokenService from '../services/refreshToken.service';
-import { sendResponse } from '../utils';
+/* eslint-disable import/extensions */
+import refreshTokenService from '../services/refreshToken.service.js';
+import { sendResponse } from '../utils.js';
 
 const refreshTokenController = async (req, res) => {
   const { refreshToken } = req.body;

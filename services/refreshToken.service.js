@@ -1,7 +1,8 @@
+/* eslint-disable import/extensions */
 import jwt from 'jsonwebtoken';
 
-import { getRefreshToken } from '../models/refreshToken.model';
-import { formatResponse, generateAccessToken } from '../utils';
+import { getRefreshToken } from '../models/refreshToken.model.js';
+import { formatResponse, generateAccessToken } from '../utils.js';
 
 const refreshTokenService = async (refreshToken) => {
   const token = await getRefreshToken(refreshToken);

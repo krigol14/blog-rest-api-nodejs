@@ -1,8 +1,9 @@
+/* eslint-disable import/extensions */
 import bcrypt from 'bcrypt';
 
-import { createRefreshToken } from '../models/refreshToken.model';
-import { createUser, getUserByEmail } from '../models/user.model';
-import { formatResponse, generateAccessToken } from '../utils';
+import { createRefreshToken } from '../models/refreshToken.model.js';
+import { createUser, getUserByEmail } from '../models/user.model.js';
+import { formatResponse, generateAccessToken } from '../utils.js';
 
 const registerUserService = async (email, password) => {
   const existingUser = await getUserByEmail(email);
