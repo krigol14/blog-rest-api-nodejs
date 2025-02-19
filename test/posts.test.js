@@ -1,3 +1,4 @@
+import { generateAccessToken } from '../utils';
 import {
   endSetup,
   insertTestPost,
@@ -20,6 +21,7 @@ describe('posts', () => {
     user2 = await insertTestUser('mark@doe.com', 'password');
     post1 = await insertTestPost(user1.id, 'Post 1');
     post2 = await insertTestPost(user2.id, 'Post 2');
+    user1AccessToken = generateAccessToken(user1.id);
 
     await endSetup();
   });
@@ -75,35 +77,15 @@ describe('posts', () => {
   });
 
   test('a user can fetch his posts', async () => {
-    // Login so that an access token is generated
-    const response1 = await request('POST', 'auth/login', {
-      body: {
-        email: 'john@doe.com',
-        password: 'password',
-      },
+    const response = await request('GET', 'posts/me', {
+      token: user1AccessToken,
     });
 
-    expect(response1.status).toBe(200);
+    expect(response.status).toBe(200);
 
-    const result1 = await response1.json();
+    const result = await response.json();
 
-    expect(result1.data).toEqual({
-      accessToken: expect.any(String),
-      refreshToken: expect.any(String),
-    });
-
-    user1AccessToken = result1.data.accessToken;
-
-    // Fetch own posts
-    const response2 = await request('GET', 'posts/me', {
-      token: result1.data.accessToken,
-    });
-
-    expect(response2.status).toBe(200);
-
-    const result2 = await response2.json();
-
-    expect(result2.data).toEqual([
+    expect(result.data).toEqual([
       {
         content: 'Post 1',
         created_at: post1.created_at.toISOString(),
@@ -151,7 +133,7 @@ describe('posts', () => {
   });
 
   test('a user can create a post', async () => {
-    const response = await request('POST', `posts`, {
+    const response = await request('POST', 'posts', {
       body: { content: 'New post' },
       token: user1AccessToken,
     });

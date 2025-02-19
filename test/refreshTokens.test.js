@@ -9,7 +9,7 @@ import {
 let user;
 let refreshToken;
 
-describe('refreshToken', () => {
+describe('refreshTokens', () => {
   beforeAll(async () => {
     await setup();
 
@@ -54,21 +54,4 @@ describe('refreshToken', () => {
       accessToken: expect.any(String),
     });
   });
-
-  // test('an error is thrown if the refresh token provided is invalid', async () => {
-  //   // Save the original JWT_SECRET
-  //   const originalJwtSecret = process.env.JWT_SECRET;
-
-  //   // Mock the JWT_SECRET
-  //   process.env.JWT_SECRET = 'invalid_secret';
-
-  //   // Call the service directly without using the API because we want to mock the JWT_SECRET
-  //   const result = await refreshTokenService(refreshToken.token);
-
-  //   expect(result.status).toBe(403);
-  //   expect(result.error).toEqual('invalid signature');
-
-  //   // Restore the original JWT_SECRET
-  //   process.env.JWT_SECRET = originalJwtSecret;
-  // });
 });

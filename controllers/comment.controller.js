@@ -1,8 +1,8 @@
 /* eslint-disable import/extensions */
-import { getCommentsPaginatedByPostId } from '../models/comment.model.js';
 import {
   createCommentService,
   deleteCommentService,
+  getPostCommentsService,
   updateCommentService,
 } from '../services/comment.service.js';
 import { getPagination, sendResponse } from '../utils.js';
@@ -15,7 +15,7 @@ const getPostCommentsController = async (req, res) => {
     return sendResponse(res, { error: 'Post ID is required', status: 400 });
   }
 
-  const result = await getCommentsPaginatedByPostId(postId, limit, offset);
+  const result = await getPostCommentsService(postId, limit, offset);
 
   return sendResponse(res, result);
 };

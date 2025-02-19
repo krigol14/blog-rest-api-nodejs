@@ -41,7 +41,7 @@ app.put('/posts/:postId', authenticate, updatePostController); // Update a post
 app.delete('/posts/:postId', authenticate, deletePostController); // Delete a post
 
 // COMMENT ROUTES
-app.get('/posts/:postId/comments', getPostCommentsController); // Fetch comments for a post
+app.get('/posts/:postId/comments', getPostCommentsController); // Fetch comments of a post
 app.post('/posts/:postId/comments', authenticate, createCommentController); // Add a comment to a post
 app.put('/comments/:commentId', authenticate, updateCommentController); // Update a comment
 app.delete('/comments/:commentId', authenticate, deleteCommentController); // Delete a comment
