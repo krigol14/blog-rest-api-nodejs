@@ -9,7 +9,7 @@ const registerUserController = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    sendResponse(res, {
+    return sendResponse(res, {
       error: 'Email and password are required',
       status: 400,
     });
@@ -17,14 +17,14 @@ const registerUserController = async (req, res) => {
 
   const result = await registerUserService(email, password);
 
-  sendResponse(res, result);
+  return sendResponse(res, result);
 };
 
 const loginUserController = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    sendResponse(res, {
+    return sendResponse(res, {
       error: 'Email and password are required',
       status: 400,
     });
@@ -32,7 +32,7 @@ const loginUserController = async (req, res) => {
 
   const result = await loginUserService(email, password);
 
-  sendResponse(res, result);
+  return sendResponse(res, result);
 };
 
 export { loginUserController, registerUserController };
