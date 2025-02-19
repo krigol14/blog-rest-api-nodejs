@@ -1,8 +1,9 @@
 /* eslint-disable import/extensions */
 import {
   loginUserService,
+  refreshTokenService,
   registerUserService,
-} from '../services/user.service.js';
+} from '../services/auth.service.js';
 import { sendResponse } from '../utils.js';
 
 const registerUserController = async (req, res) => {
@@ -35,4 +36,19 @@ const loginUserController = async (req, res) => {
   return sendResponse(res, result);
 };
 
-export { loginUserController, registerUserController };
+const refreshTokenController = async (req, res) => {
+  const { refreshToken } = req.body;
+
+  if (!refreshToken) {
+    return sendResponse(res, {
+      error: 'Refresh token is required',
+      status: 400,
+    });
+  }
+
+  const result = await refreshTokenService(refreshToken);
+
+  return sendResponse(res, result);
+};
+
+export { loginUserController, refreshTokenController, registerUserController };

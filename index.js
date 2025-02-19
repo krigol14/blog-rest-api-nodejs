@@ -3,6 +3,11 @@ import express from 'express';
 import signale from 'signale';
 
 import {
+  loginUserController,
+  refreshTokenController,
+  registerUserController,
+} from './controllers/auth.controller.js';
+import {
   createCommentController,
   deleteCommentController,
   getPostCommentsController,
@@ -16,11 +21,6 @@ import {
   getPostsByUserController,
   updatePostController,
 } from './controllers/post.controller.js';
-import refreshTokenController from './controllers/refreshToken.controller.js';
-import {
-  loginUserController,
-  registerUserController,
-} from './controllers/user.controller.js';
 import authenticate from './middlewares/authenticate.js';
 
 const app = express();
