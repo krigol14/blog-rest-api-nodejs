@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import pool from '../db.js';
 
 const getUserByEmail = async (email) => {
@@ -11,7 +10,7 @@ const getUserByEmail = async (email) => {
 const createUser = async (email, password) => {
   const result = await pool.query(
     'INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *',
-    [email, password]
+    [email, password],
   );
   return result.rows[0];
 };

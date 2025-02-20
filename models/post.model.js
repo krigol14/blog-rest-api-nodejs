@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import pool from '../db.js';
 
 const getPostsPaginated = async (limit, offset, userId = null) => {
@@ -22,7 +21,7 @@ const getPostById = async (postId) => {
 const createPost = async (userId, content) => {
   const result = await pool.query(
     'INSERT INTO posts (user_id, content) VALUES ($1, $2) RETURNING *',
-    [userId, content]
+    [userId, content],
   );
   return result.rows[0];
 };
@@ -30,7 +29,7 @@ const createPost = async (userId, content) => {
 const updatePost = async (postId, content) => {
   const result = await pool.query(
     'UPDATE posts SET content = $1 WHERE id = $2 RETURNING *',
-    [content, postId]
+    [content, postId],
   );
   return result.rowCount > 0 ? result.rows[0] : null;
 };

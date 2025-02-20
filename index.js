@@ -1,6 +1,4 @@
-/* eslint-disable import/extensions */
 import express from 'express';
-import signale from 'signale';
 
 import {
   loginController,
@@ -57,5 +55,5 @@ app.delete('/comments/:commentId', authenticate, deleteCommentController); // De
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  signale.info(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });

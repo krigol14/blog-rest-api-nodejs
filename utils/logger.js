@@ -52,12 +52,12 @@ morgan.token('colored-status', (_, res) => statusColor(res.statusCode));
 
 // Production Log Format
 const prodLogger = morgan(
-  '[REQ] :req-time | :method :url | :colored-status | :response-time ms'
+  '[REQ] :req-time | :method :url | :colored-status | :response-time ms',
 );
 
 // Debug Log Format
 const debugLogger = morgan(
-  '[REQ] :req-time | :method :url | Path: :path | Params: :params | Query: :query | Headers: :headers | Body: :body | :colored-status | Response Time: :response-time ms'
+  '[REQ] :req-time | :method :url | Path: :path | Params: :params | Query: :query | Headers: :headers | Body: :body | :colored-status | Response Time: :response-time ms',
 );
 
 export { debugLogger, prodLogger };
