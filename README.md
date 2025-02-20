@@ -46,28 +46,52 @@ The API uses JWT tokens for authentication.
 - If the refresh token has also expired, users must log in again.
 
 ## Project Structure
-The API follows the **three-layer architecture**:
 
-### Directories
-- `controllers/` - Handle HTTP requests, validate input, and forward data to services.
-- `services/` - Contain business logic and interact with the database.
-- `models/` - Functions used to interact with the database.
-- `middlewares/`
-  - `authenticate.js` - Middleware for verifying JWT authentication.
-- `utils/`
-  - `db.js` - Manages database connections.
-  - `logger.js` - Configures logging with **morgan**.
-  - `helpers.js` - Utility functions to reduce code duplication.
-- `tests/`
-  - `auth.test.js`, `posts.test.js`, `comments.test.js` - Integration tests using Jest.
-  - `utils.js` - Helpers for test setup, database connections, and request utilities.
+The API follows the **three-layer architecture**.
 
-### `index.js`
-- Initializes the **Express server** and defines **routes**.
-- Routes delegate requests to **controllers**.
-- Controllers validate input and call **services**.
-- Services execute **business logic** and interact with **models**.
-- Controllers return responses to **clients**.
+### 1. **Directories**
+
+These directories contain the core components of the application:
+
+- **`controllers/`**  
+  Handle HTTP requests, validate input, and forward data to services.
+  
+- **`services/`**  
+  Contain business logic and interact with the database.
+  
+- **`models/`**  
+  Functions used to interact with the database.
+  
+- **`middlewares/`**  
+  - **`authenticate.js`**: Middleware for verifying JWT authentication.
+  
+- **`utils/`**  
+  Utility functions to reduce code duplication.
+  - **`db.js`**: Manages database connections.
+  - **`logger.js`**: Configures logging with **morgan**.
+  - **`helpers.js`**: Contains utility functions for reusable code.
+  
+- **`tests/`**  
+  Integration tests using Jest.
+  - **`auth.test.js`**, **`posts.test.js`**, **`comments.test.js`**: Integration tests for various parts of the application.
+  - **`utils.js`**: Helpers for test setup, database connections, and request utilities.
+
+### 2. **Entry Point of the Server**
+
+- **`index.js`**  
+  - Initializes the **Express server** and defines **routes**.
+  - Routes delegate requests to **controllers**.
+  - Controllers validate input and call **services**.
+  - Services execute **business logic** and interact with **models**.
+  - Controllers return responses to **clients**.
+
+### 3. **Configuration Files**
+
+- **`.prettierrc`**: Prettier configuration file for code formatting.
+- **`eslint.config.mjs`**: ESLint configuration file for linting JavaScript files.
+- **`nodemon.json`**: Configuration for Nodemon's behavior to restart the server on code changes.
+- **`Procfile`**: Specifies how Heroku runs the server.
+- **`jest.config.json`**: Jest configuration file for running integration tests.
 
 ## Testing
 - The API uses **Jest** for testing.
@@ -87,13 +111,6 @@ The API and two PostgreSQL databases (**development** and **testing**) are deplo
 ## Environment Variables  
 - A `.env` file is required for running the server locally.  
 - This file contains sensitive information such as database credentials and the JWT secret.  
-- To obtain it, request it from `@krigol14` or become a collaborator on the Heroku deployment, where all environment variables are securely stored.  
+- To obtain it, either **request the file directly** or **request access to become a collaborator** on the Heroku app hosting the server and databases, where all configuration variables are securely stored.  
+- You can contact me at [kristiangolemidev@gmail.com](mailto:kristiangolemidev@gmail.com) for access.  
 - The `.env` file is already in `.gitignore` but make sure to **not commit the `.env` file to version control** to prevent exposing sensitive data.  
-
-## Additional Configurations
-- **ESLint & Prettier** - Enforce code quality and formatting.
-- **Nodemon** - Restarts the server on code changes.
-- **Procfile** - Specifies how Heroku runs the server.
-- **Jest Config** - Custom test setup for integration testing.
-
----
