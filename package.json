@@ -16,8 +16,10 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "chalk": "^5.4.1",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
     "pg": "^8.13.3",
     "signale": "^1.4.0"
   },

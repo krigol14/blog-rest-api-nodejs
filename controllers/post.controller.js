@@ -3,12 +3,12 @@ import {
   createPostService,
   deletePostService,
   getPostsService,
-  getUserPostsService,
+  getUserPostsControllerService,
   updatePostService,
 } from '../services/post.service.js';
 import { getPagination, sendResponse } from '../utils.js';
 
-const getPostsByUserController = async (req, res) => {
+const getUserPostsController = async (req, res) => {
   const { userId } = req.params;
   const { limit, offset } = getPagination(req.query);
 
@@ -16,7 +16,7 @@ const getPostsByUserController = async (req, res) => {
     return sendResponse(res, { error: 'User ID is required', status: 400 });
   }
 
-  const result = await getUserPostsService(userId, limit, offset);
+  const result = await getUserPostsControllerService(userId, limit, offset);
 
   return sendResponse(res, result);
 };
@@ -37,7 +37,7 @@ const getMyPostsController = async (req, res) => {
     return sendResponse(res, { error: 'User ID is required', status: 400 });
   }
 
-  const result = await getUserPostsService(userId, limit, offset);
+  const result = await getUserPostsControllerService(userId, limit, offset);
 
   return sendResponse(res, result);
 };
@@ -91,6 +91,6 @@ export {
   deletePostController,
   getAllPostsController,
   getMyPostsController,
-  getPostsByUserController,
+  getUserPostsController,
   updatePostController,
 };

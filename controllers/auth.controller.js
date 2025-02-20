@@ -6,7 +6,7 @@ import {
 } from '../services/auth.service.js';
 import { sendResponse } from '../utils.js';
 
-const registerUserController = async (req, res) => {
+const registerController = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -21,7 +21,7 @@ const registerUserController = async (req, res) => {
   return sendResponse(res, result);
 };
 
-const loginUserController = async (req, res) => {
+const loginController = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -51,4 +51,4 @@ const refreshTokenController = async (req, res) => {
   return sendResponse(res, result);
 };
 
-export { loginUserController, refreshTokenController, registerUserController };
+export { loginController, refreshTokenController, registerController };

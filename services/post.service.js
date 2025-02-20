@@ -13,7 +13,7 @@ const getPostsService = async (limit, offset) => {
   return formatResponse({ data: posts, status: 200 });
 };
 
-const getUserPostsService = async (userId, limit, offset) => {
+const getUserPostsControllerService = async (userId, limit, offset) => {
   const userPosts = await getPostsPaginated(limit, offset, userId);
   return formatResponse({ data: userPosts, status: 200 });
 };
@@ -63,6 +63,6 @@ export {
   createPostService,
   deletePostService,
   getPostsService,
-  getUserPostsService,
+  getUserPostsControllerService,
   updatePostService,
 };
