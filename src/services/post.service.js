@@ -35,10 +35,6 @@ const updatePostService = async (postId, userId, content) => {
 
   const updatedPost = await updatePost(postId, content);
 
-  if (!updatedPost) {
-    return formatResponse({ error: 'Post not found', status: 404 });
-  }
-
   return formatResponse({ data: updatedPost, status: 200 });
 };
 
