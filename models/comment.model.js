@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import pool from '../db.js';
 
 const getCommentById = async (commentId) => {
@@ -11,7 +10,7 @@ const getCommentById = async (commentId) => {
 const getCommentsPaginatedByPostId = async (postId, limit, offset) => {
   const result = await pool.query(
     'SELECT * FROM comments WHERE post_id = $1 LIMIT $2 OFFSET $3',
-    [postId, limit, offset]
+    [postId, limit, offset],
   );
   return result.rows;
 };
@@ -19,7 +18,7 @@ const getCommentsPaginatedByPostId = async (postId, limit, offset) => {
 const createComment = async (postId, userId, content) => {
   const result = await pool.query(
     'INSERT INTO comments (post_id, user_id, content) VALUES ($1, $2, $3) RETURNING *',
-    [postId, userId, content]
+    [postId, userId, content],
   );
   return result.rows[0];
 };
@@ -27,7 +26,7 @@ const createComment = async (postId, userId, content) => {
 const updateComment = async (commentId, userId, content) => {
   const result = await pool.query(
     'UPDATE comments SET content = $1 WHERE id = $2 AND user_id = $3 RETURNING *',
-    [content, commentId, userId]
+    [content, commentId, userId],
   );
   return result.rowCount > 0 ? result.rows[0] : null;
 };
@@ -35,7 +34,7 @@ const updateComment = async (commentId, userId, content) => {
 const deleteComment = async (commentId, userId) => {
   const result = await pool.query(
     'DELETE FROM comments WHERE id = $1 AND user_id = $2',
-    [commentId, userId]
+    [commentId, userId],
   );
   return result.rowCount > 0;
 };

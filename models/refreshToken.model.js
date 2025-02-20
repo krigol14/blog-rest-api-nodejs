@@ -1,10 +1,9 @@
-/* eslint-disable import/extensions */
 import pool from '../db.js';
 
 const getRefreshToken = async (token) => {
   const result = await pool.query(
     'SELECT * FROM refresh_tokens WHERE token = $1',
-    [token]
+    [token],
   );
   return result.rows[0];
 };
@@ -12,7 +11,7 @@ const getRefreshToken = async (token) => {
 const createRefreshToken = async (userId, token) => {
   const result = await pool.query(
     "INSERT INTO refresh_tokens (user_id, token, expires_at) VALUES ($1, $2, NOW() + INTERVAL '7 days')",
-    [userId, token]
+    [userId, token],
   );
   return result.rows[0];
 };

@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import jwt from 'jsonwebtoken';
 
 import { sendResponse } from '../utils.js';
@@ -28,7 +27,7 @@ const authenticate = (req, res, next) => {
     return next();
   } catch (err) {
     return sendResponse(res, {
-      error: 'Invalid or expired token',
+      error: err.message,
       status: 401,
     });
   }

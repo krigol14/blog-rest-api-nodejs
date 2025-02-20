@@ -1,8 +1,7 @@
-/* eslint-disable import/extensions */
-import { getCommentsPaginatedByPostId } from '../models/comment.model.js';
 import {
   createCommentService,
   deleteCommentService,
+  getPostCommentsService,
   updateCommentService,
 } from '../services/comment.service.js';
 import { getPagination, sendResponse } from '../utils.js';
@@ -12,12 +11,12 @@ const getPostCommentsController = async (req, res) => {
   const { limit, offset } = getPagination(req.query);
 
   if (!postId) {
-    sendResponse(res, { error: 'Post ID is required', status: 400 });
+    return sendResponse(res, { error: 'Post ID is required', status: 400 });
   }
 
-  const result = await getCommentsPaginatedByPostId(postId, limit, offset);
+  const result = await getPostCommentsService(postId, limit, offset);
 
-  sendResponse(res, result);
+  return sendResponse(res, result);
 };
 
 const createCommentController = async (req, res) => {
@@ -26,16 +25,16 @@ const createCommentController = async (req, res) => {
   const userId = req.user.id;
 
   if (!postId) {
-    sendResponse(res, { error: 'Post ID is required', status: 400 });
+    return sendResponse(res, { error: 'Post ID is required', status: 400 });
   }
 
   if (!content) {
-    sendResponse(res, { error: 'Content is required', status: 400 });
+    return sendResponse(res, { error: 'Content is required', status: 400 });
   }
 
   const result = await createCommentService(postId, userId, content);
 
-  sendResponse(res, result);
+  return sendResponse(res, result);
 };
 
 const updateCommentController = async (req, res) => {
@@ -44,16 +43,16 @@ const updateCommentController = async (req, res) => {
   const userId = req.user.id;
 
   if (!commentId) {
-    sendResponse(res, { error: 'Comment ID is required', status: 400 });
+    return sendResponse(res, { error: 'Comment ID is required', status: 400 });
   }
 
   if (!content) {
-    sendResponse(res, { error: 'Content is required', status: 400 });
+    return sendResponse(res, { error: 'Content is required', status: 400 });
   }
 
   const result = await updateCommentService(commentId, userId, content);
 
-  sendResponse(res, result);
+  return sendResponse(res, result);
 };
 
 const deleteCommentController = async (req, res) => {
@@ -61,12 +60,12 @@ const deleteCommentController = async (req, res) => {
   const userId = req.user.id;
 
   if (!commentId) {
-    sendResponse(res, { error: 'Comment ID is required', status: 400 });
+    return sendResponse(res, { error: 'Comment ID is required', status: 400 });
   }
 
   const result = await deleteCommentService(commentId, userId);
 
-  sendResponse(res, result);
+  return sendResponse(res, result);
 };
 
 export {

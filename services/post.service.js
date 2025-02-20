@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import {
   createPost,
   deletePost,
@@ -10,10 +9,10 @@ import { formatResponse } from '../utils.js';
 
 const getPostsService = async (limit, offset) => {
   const posts = await getPostsPaginated(limit, offset);
-  return formatResponse(posts, null, 200);
+  return formatResponse({ data: posts, status: 200 });
 };
 
-const getUserPostsService = async (userId, limit, offset) => {
+const getUserPostsControllerService = async (userId, limit, offset) => {
   const userPosts = await getPostsPaginated(limit, offset, userId);
   return formatResponse({ data: userPosts, status: 200 });
 };
@@ -63,6 +62,6 @@ export {
   createPostService,
   deletePostService,
   getPostsService,
-  getUserPostsService,
+  getUserPostsControllerService,
   updatePostService,
 };

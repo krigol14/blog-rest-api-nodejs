@@ -1,7 +1,10 @@
-/* eslint-disable import/extensions */
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
-import { createRefreshToken } from '../models/refreshToken.model.js';
+import {
+  createRefreshToken,
+  getRefreshToken,
+} from '../models/refreshToken.model.js';
 import { createUser, getUserByEmail } from '../models/user.model.js';
 import { formatResponse, generateAccessToken } from '../utils.js';
 
@@ -43,4 +46,24 @@ const loginUserService = async (email, password) => {
   return formatResponse({ data: { accessToken, refreshToken }, status: 200 });
 };
 
-export { loginUserService, registerUserService };
+const refreshTokenService = async (refreshToken) => {
+  const token = await getRefreshToken(refreshToken);
+
+  if (!token) {
+    return formatResponse({ error: 'Token not found', status: 401 });
+  }
+
+  try {
+    const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET);
+    const accessToken = generateAccessToken(decoded.id);
+
+    return formatResponse({
+      data: { accessToken },
+      status: 200,
+    });
+  } catch (err) {
+    return formatResponse({ error: err.message, status: 403 });
+  }
+};
+
+export { loginUserService, refreshTokenService, registerUserService };

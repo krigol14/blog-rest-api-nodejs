@@ -1,24 +1,23 @@
-/* eslint-disable import/extensions */
 import {
   createPostService,
   deletePostService,
   getPostsService,
-  getUserPostsService,
+  getUserPostsControllerService,
   updatePostService,
 } from '../services/post.service.js';
 import { getPagination, sendResponse } from '../utils.js';
 
-const getPostsByUserController = async (req, res) => {
+const getUserPostsController = async (req, res) => {
   const { userId } = req.params;
   const { limit, offset } = getPagination(req.query);
 
   if (!userId) {
-    sendResponse(res, { error: 'User ID is required', status: 400 });
+    return sendResponse(res, { error: 'User ID is required', status: 400 });
   }
 
-  const result = await getUserPostsService(userId, limit, offset);
+  const result = await getUserPostsControllerService(userId, limit, offset);
 
-  sendResponse(res, result);
+  return sendResponse(res, result);
 };
 
 const getAllPostsController = async (req, res) => {
@@ -26,7 +25,7 @@ const getAllPostsController = async (req, res) => {
 
   const result = await getPostsService(limit, offset);
 
-  sendResponse(res, result);
+  return sendResponse(res, result);
 };
 
 const getMyPostsController = async (req, res) => {
@@ -34,12 +33,12 @@ const getMyPostsController = async (req, res) => {
   const userId = req.user.id;
 
   if (!userId) {
-    sendResponse(res, { error: 'User ID is required', status: 400 });
+    return sendResponse(res, { error: 'User ID is required', status: 400 });
   }
 
-  const result = await getUserPostsService(userId, limit, offset);
+  const result = await getUserPostsControllerService(userId, limit, offset);
 
-  sendResponse(res, result);
+  return sendResponse(res, result);
 };
 
 const updatePostController = async (req, res) => {
@@ -48,16 +47,16 @@ const updatePostController = async (req, res) => {
   const userId = req.user.id;
 
   if (!postId) {
-    sendResponse(res, { error: 'Post ID is required', status: 400 });
+    return sendResponse(res, { error: 'Post ID is required', status: 400 });
   }
 
   if (!content) {
-    sendResponse(res, { error: 'Content is required', status: 400 });
+    return sendResponse(res, { error: 'Content is required', status: 400 });
   }
 
   const result = await updatePostService(postId, userId, content);
 
-  sendResponse(res, result);
+  return sendResponse(res, result);
 };
 
 const deletePostController = async (req, res) => {
@@ -65,12 +64,12 @@ const deletePostController = async (req, res) => {
   const userId = req.user.id;
 
   if (!postId) {
-    sendResponse(res, { error: 'Post ID is required', status: 400 });
+    return sendResponse(res, { error: 'Post ID is required', status: 400 });
   }
 
   const result = await deletePostService(postId, userId);
 
-  sendResponse(res, result);
+  return sendResponse(res, result);
 };
 
 const createPostController = async (req, res) => {
@@ -78,12 +77,12 @@ const createPostController = async (req, res) => {
   const userId = req.user.id;
 
   if (!content) {
-    sendResponse(res, { error: 'Content is required', status: 400 });
+    return sendResponse(res, { error: 'Content is required', status: 400 });
   }
 
   const result = await createPostService(userId, content);
 
-  sendResponse(res, result);
+  return sendResponse(res, result);
 };
 
 export {
@@ -91,6 +90,6 @@ export {
   deletePostController,
   getAllPostsController,
   getMyPostsController,
-  getPostsByUserController,
+  getUserPostsController,
   updatePostController,
 };
