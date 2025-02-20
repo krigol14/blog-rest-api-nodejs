@@ -5,7 +5,7 @@ import {
   getPostsPaginated,
   updatePost,
 } from '../models/post.model.js';
-import { formatResponse } from '../utils.js';
+import { formatResponse } from '../utils/helpers.js';
 
 const getPostsService = async (limit, offset) => {
   const posts = await getPostsPaginated(limit, offset);

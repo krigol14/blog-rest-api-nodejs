@@ -6,7 +6,7 @@ import {
   getRefreshToken,
 } from '../models/refreshToken.model.js';
 import { createUser, getUserByEmail } from '../models/user.model.js';
-import { formatResponse, generateAccessToken } from '../utils.js';
+import { formatResponse, generateAccessToken } from '../utils/helpers.js';
 
 const registerUserService = async (email, password) => {
   const existingUser = await getUserByEmail(email);

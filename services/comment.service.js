@@ -5,7 +5,7 @@ import {
   getCommentsPaginatedByPostId,
   updateComment,
 } from '../models/comment.model.js';
-import { formatResponse } from '../utils.js';
+import { formatResponse } from '../utils/helpers.js';
 
 const getPostCommentsService = async (postId, limit, offset) => {
   const comments = await getCommentsPaginatedByPostId(postId, limit, offset);

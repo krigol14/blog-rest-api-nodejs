@@ -1,9 +1,9 @@
+import { sendResponse } from '../utils/helpers.js';
 import {
+  registerUserService,
   loginUserService,
   refreshTokenService,
-  registerUserService,
 } from '../services/auth.service.js';
-import { sendResponse } from '../utils.js';
 
 const registerController = async (req, res) => {
   const { email, password } = req.body;

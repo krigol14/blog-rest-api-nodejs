@@ -4,7 +4,7 @@ import {
   getPostCommentsService,
   updateCommentService,
 } from '../services/comment.service.js';
-import { getPagination, sendResponse } from '../utils.js';
+import { getPagination, sendResponse } from '../utils/helpers.js';
 
 const getPostCommentsController = async (req, res) => {
   const { postId } = req.params;

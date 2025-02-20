@@ -5,7 +5,7 @@ import {
   getUserPostsControllerService,
   updatePostService,
 } from '../services/post.service.js';
-import { getPagination, sendResponse } from '../utils.js';
+import { getPagination, sendResponse } from '../utils/helpers.js';
 
 const getUserPostsController = async (req, res) => {
   const { userId } = req.params;

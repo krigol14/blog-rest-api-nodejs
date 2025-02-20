@@ -1,4 +1,4 @@
-import { generateAccessToken } from '../utils';
+import { generateAccessToken } from '../utils/helpers';
 import {
   endSetup,
   insertTestPost,

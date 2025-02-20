@@ -1,4 +1,4 @@
-import pool from '../db.js';
+import pool from '../utils/db.js';
 
 const getRefreshToken = async (token) => {
   const result = await pool.query(

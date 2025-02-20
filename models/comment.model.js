@@ -1,4 +1,4 @@
-import pool from '../db.js';
+import pool from '../utils/db.js';
 
 const getCommentById = async (commentId) => {
   const result = await pool.query('SELECT * FROM comments WHERE id = $1', [

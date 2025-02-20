@@ -2,8 +2,8 @@ import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
 
-import { createPool } from '../db';
-import { generateAccessToken } from '../utils';
+import { createPool } from '../utils/db';
+import { generateAccessToken } from '../utils/helpers';
 
 dotenv.config();
 

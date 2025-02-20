@@ -1,4 +1,4 @@
-import pool from '../db.js';
+import pool from '../utils/db.js';
 
 const getUserByEmail = async (email) => {
   const result = await pool.query('SELECT * FROM users WHERE email = $1', [
