@@ -260,6 +260,7 @@ Add a comment to a post.
 #### Responses:
 - `400 Bad Request` - Content is required.
 - `400 Bad Request` - Post ID is required.
+- `404 Not Found` - Post not found.
 - `201 Created` - Returns comment in `data`.
 
 ### `PUT /comments/:commentId`
