@@ -1,5 +1,3 @@
-# Quintessential NodeJS Challenge
-
 # Overview
 This is a RESTful API built using Express.js, structured with the three-layer architecture pattern. The API supports user authentication, post and comments CRUD operations. It also includes integration tests and is deployed on Heroku.
 
